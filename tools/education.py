@@ -14,6 +14,7 @@ for cid, title, body in claims:
     for d in re.findall(r"Depends on:.*", body):
         for x in re.findall(r"C\d+", d): dep[x] = dep.get(x, 0) + 1
 lines = ["# Packet", f"since: {last}", f"spec version: {spec_version()}", "", "## Claims (status / understanding links / tier / fan-out)"]
+eligible = 0
 for cid, title, body in claims:
     g = lambda k: (re.search(rf"{k}:\s*([^\n<]+)", body) or [None, "?"])[1].strip()
     lines.append(f"- {cid} {title.strip()} | status={g('Status')} | understanding={g('Understanding concept links')} | tier={g('Tier')} | fan_out={dep.get(cid,0)}")
@@ -26,6 +27,7 @@ for p in sorted(REPORTS.glob("*.md")):
         lines.append(f"- {p.name}: not independently verified, do not teach from it"); continue
     r = subprocess.run(["python3", str(ROOT/"tools/check_report.py"), str(p)], capture_output=True, text=True)
     if r.returncode != 0: lines.append(f"- {p.name}: FAILED validation, do not teach from it"); continue
+    eligible += 1
     t = p.read_text(); fm = frontmatter(t)
     cl = re.search(r"## Claims\n(.*?)\n## ", t, re.S); load = re.search(r"## Conceptual load\n(.*?)\n## ", t, re.S)
     lines += [f"### {p.name}  status={fm.get('status')} confidence={fm.get('confidence')}",
@@ -38,4 +40,8 @@ lines += ["", "## Demonstrated understanding ledger", (ED/"UNDERSTANDING.md").re
 print(f"packet written: Education/.context/packet.md\n"
       f"dispatch: 'Read Education/AGENT.md and produce today's brief ({today()}).'\n"
       f"after it runs: python3 tools/check_brief.py Education/briefs/{today()}.md && python3 tools/render_brief.py Education/briefs/{today()}.md")
-atomic_write(pending, today()+"\n")
+if eligible:
+    atomic_write(pending, today()+"\n")
+else:
+    if pending.exists(): pending.unlink()
+    print("no independently verified finding requires a brief; remain quiet")

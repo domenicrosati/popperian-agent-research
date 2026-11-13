@@ -25,8 +25,12 @@ AGENT_CMD ?= echo "no AGENT_CMD set; dispatch manually:" && cat Education/.conte
 .PHONY: morning brief-check
 morning:
 	@python3 tools/education.py >/dev/null
-	@echo "Read Education/AGENT.md and produce today's brief ($$(date +%F)). When done run: python3 tools/check_brief.py Education/briefs/$$(date +%F).md && python3 tools/render_brief.py Education/briefs/$$(date +%F).md" > Education/.context/dispatch.txt
-	@$(AGENT_CMD)
-	@python3 tools/finalize_brief.py
+	@if test -f Education/.context/pending_brief; then \
+	  echo "Read Education/AGENT.md and produce today's brief ($$(date +%F)). When done run: python3 tools/check_brief.py Education/briefs/$$(date +%F).md && python3 tools/render_brief.py Education/briefs/$$(date +%F).md" > Education/.context/dispatch.txt; \
+	  $(AGENT_CMD); \
+	  python3 tools/finalize_brief.py; \
+	else \
+	  echo "quiet: no verified finding justifies human attention"; \
+	fi
 brief-check:
 	@python3 tools/check_brief.py Education/briefs/$$(date +%F).md && python3 tools/render_brief.py Education/briefs/$$(date +%F).md

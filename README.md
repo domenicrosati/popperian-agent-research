@@ -5,7 +5,9 @@ A public, tool-agnostic template for autonomous research agents that optimizes f
 1. **Popperian science:** agents try to refute precise claims with severe tests instead of producing persuasive confirmations.
 2. **Rapid human understanding:** verified discoveries are selectively converted into the human ability to reconstruct, predict, and transfer the important ideas.
 
-The goal is not to maximize reports, tokens, experiments, or proofs. It is to increase the rate of reliable discovery while increasing—rather than eroding—the human researcher's independent judgment.
+The goal is not to maximize reports, tokens, experiments, proofs, or time spent interacting with AI. It is to increase the rate of reliable discovery while increasing—rather than eroding—the human researcher's independent judgment and uninterrupted time to think.
+
+**The default human state should be away from the agents.** Agents work asynchronously, preserve context, recover from routine failures, and wait for a small number of deliberate review windows. The human's best hours belong to creativity, problem selection, mathematical thought, reading, writing, and understanding—not supervising an agent swarm or responding to a stream of plausible suggestions.
 
 ## Why this exists
 
@@ -46,15 +48,28 @@ Reading an explanation is not evidence of understanding. A concept is assimilate
 
 Briefs are therefore prompt-first: answers are rendered separately, and performance is tracked independently from the scientific claim ledger. The optimization target is capability gained per hour of human attention.
 
-## Human attention is the scarce resource
+## Human absence is a design requirement
 
-Agents independently handle reversible technical choices, bounded retries, diagnostics, and pre-approved fallback branches. They interrupt the human only for a changed scientific target, a foundational contradiction, an irreversible or external action, or a budget breach. Routine ambiguity is recorded and batched.
+Human attention is not merely a scarce resource to allocate efficiently. Continuous AI interaction can fragment thought, replace problem incubation with reactive reviewing, and make the agent's framing dominate the researcher's own ideas. This system is therefore designed for long periods of human absence.
 
-The intended human interface is small:
+Agents independently handle reversible technical choices, bounded retries, diagnostics, checkpointing, recovery, and pre-approved fallback branches. They do not send progress chatter. They interrupt only for a changed scientific target, a replicated foundational contradiction, an irreversible or external action, or a budget breach. Routine ambiguity, failures, and suggestions are recorded and batched for the next review window.
+
+The intended rhythm is:
+
+```text
+human sets direction → agents work independently → evidence is reproduced and criticized
+→ one compact asynchronous packet → human thinks, learns, and decides → human leaves again
+```
+
+The repository should create fewer AI interactions over time as it learns the programme's constraints and the human's demonstrated understanding. A successful deployment gives the researcher more agent-free time, not a more elaborate agent dashboard.
+
+The intended human interface is deliberately small and pull-based:
 
 ```sh
 make attention   # consequential decisions, verified changes, and today's learning item
 ```
+
+There are no routine progress notifications. If nothing consequential has changed, the correct packet is empty. The human chooses when to pull it.
 
 Everything below explains how the repository implements those commitments.
 
@@ -113,7 +128,7 @@ Validated findings pile up faster than you can assimilate them; that backlog is 
 
 ## Human attention contract
 
-Agents decide reversible technical details, retry transient failures, and use pre-approved fallback branches. They interrupt only for a changed scientific target, a foundational contradiction, an irreversible/external action, or a budget breach. Everything else is batched. Research truth remains in `SPEC.md`; demonstrated human capability remains separately in `Education/UNDERSTANDING.md` and the append-only understanding events.
+Agents decide reversible technical details, retry transient failures, and use pre-approved fallback branches. They interrupt only for a changed scientific target, a replicated foundational contradiction, an irreversible/external action, or a budget breach. Everything else is batched into pull-based review windows. Research truth remains in `SPEC.md`; demonstrated human capability remains separately in `Education/UNDERSTANDING.md` and the append-only understanding events.
 
 ## Agent entry point
 

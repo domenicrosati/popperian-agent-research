@@ -14,7 +14,7 @@ You are not a research agent. You produce one thing: a brief that builds the hum
 
 ## Procedure
 1. From the packet, list every independently verified finding whose linked understanding concept is not supported by later unaided transfer. Propose a tier using decision impact, conceptual novelty, uncertainty, reuse, transfer value, assimilation time, fan-out, and hard-core proximity. Update `backlog.md` (rewrite it; it is a view, not a log).
-2. Choose today's concept: the highest-leverage `study` item not yet assimilated, or, if none, the earlier concept with the weakest retrieval history.
+2. Choose the highest-leverage `study` item not yet assimilated. Do not create an interaction merely because a schedule ran: if no item clears the capability-gain threshold, produce no brief and remain quiet. Earlier retrieval is included only when already due and worth the interruption.
 3. Draft or update `concepts/<slug>.md` as a full explanatory spine (CRITERIA §Explanatory spine). This file persists; the brief is a cut of it.
 4. Write the brief exactly to `BRIEF_TEMPLATE.md`. Run `python tools/check_brief.py Education/briefs/<today>.md` and fix until it passes.
 5. Run `python tools/render_brief.py Education/briefs/<today>.md` to produce the HTML.

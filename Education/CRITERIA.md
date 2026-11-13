@@ -3,6 +3,8 @@
 ## Purpose
 The brief exists to build *my* understanding of what the programme now knows. It is not a status report, not a to-do list, not a management dashboard. If a sentence does not help me reconstruct, predict, or transfer, cut it.
 
+It must also protect time away from AI. Do not manufacture a daily interaction. If no concept has enough expected capability gain to justify interrupting independent thought, produce no brief. Retrieval may be scheduled, but the human chooses when to pull it.
+
 ## Hard limits
 - Under 700 words of prose excluding the retrieval answers. I read it on an iPad with coffee.
 - Exactly one concept per brief in the "Today" section, from the `study` tier. If nothing new qualifies, revisit an earlier concept with a harder reconstruction prompt instead of inventing one.

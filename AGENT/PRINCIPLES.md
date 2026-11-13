@@ -6,6 +6,8 @@ The repo runs two coupled loops.
 
 **Understanding loop (human, served by the education agent):** reconstruct, compress, challenge, connect, derive something new independently. Maximise the rate μ at which validated findings become independent research capability. Lives in Education/, SPEC.md, HUMAN/.
 
+**Attention constraint:** minimise the frequency of human-agent interaction subject to scientific safety. Preserve long, uninterrupted periods for human creativity and thought. Prefer one pull-based packet to many notifications; prefer silence to a status update with no required decision or high-leverage insight.
+
 The backlog B of findings that are validated but not yet assimilated grows at λ − μ. We do **not** try to drive B to zero. We triage it:
 
 | Tier | Treatment | Who decides |
