@@ -75,6 +75,8 @@ Everything below explains how the repository implements those commitments.
 
 ## Repository architecture
 
+Apply `AWAY_POLICY.md` for unattended operation: coordinators may work through weekends, while all human review waits for weekday mornings. Each goal needs explicit recovery permissions and budgets. Local supervision requires an online executor.
+
 Research is seasonal. `RESEARCH_SEASONS.md` distinguishes theory formation, empirical discovery and validation, mathematical consolidation, and rigorous confirmation/paper reduction. The same quiet morning and afternoon runners change behavior with the active season; only the human creates new goals.
 
 Understanding artifacts are grounded in human literature under `Education/LITERATURE_POLICY.md`: foundational pre-2023 papers and textbooks are preferred, post-2023 sources require trusted authorship or explicit justification, and every study brief provides a short path into the relevant human intellectual lineage.
