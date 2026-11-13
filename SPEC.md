@@ -3,6 +3,8 @@
 Last edited: YYYY-MM-DD
 Spec version: 0.1   <- bump this whenever beliefs or claims change; tasks record the version they were dispatched under
 
+Active research season: empirical discovery and validation
+
 ## 1. Research programme (Lakatos)
 Hard core (what we are not currently willing to give up):
 - ...
@@ -33,6 +35,7 @@ Each claim has a falsifier. A claim without a falsifier is not a claim yet.
 - Compute:
 - Time:
 - Methods we will not use and why:
+- Human/agent division today: the human sets this explicitly each morning; scheduled agents never invent new goals.
 
 ## 5. Current beliefs (edit as understanding evolves)
 Short, dated bullets. Agents treat the most recent as authoritative.

@@ -6,7 +6,7 @@ p = pathlib.Path(sys.argv[1]); t = p.read_text(); errs = []
 fm = frontmatter(t)
 for k in ("date","concept","backlog_study"):
     if k not in fm: errs.append(f"frontmatter missing {k}")
-for h in ["Status","Today:","Self-test","Retrieval","Backlog","Reading","Retrieval answers"]:
+for h in ["Status","Today:","Self-test","Human lineage","Read deeper","Retrieval","Backlog","Reading","Retrieval answers"]:
     if not re.search(rf"^##+ {re.escape(h)}", t, re.M): errs.append(f"missing section {h}")
 body = t.split("## Retrieval answers")[0]
 words = len(re.sub(r"\|.*\|", "", body).split())
@@ -18,6 +18,10 @@ st = re.search(r"### Self-test\n(.*?)\n## ", t, re.S)
 if not st or not all(k in st.group(1) for k in ("Reconstruct","Predict","Transfer")): errs.append("self-test must include Reconstruct/Predict/Transfer")
 status = re.search(r"## Status\n(.*?)\n## ", t, re.S)
 if status and len([l for l in status.group(1).strip().splitlines() if l.strip()]) > 5: errs.append("Status over 5 lines")
+lineage = re.search(r"### Human lineage\n(.*?)(?=\n### |\n## )", t, re.S)
+if lineage and not re.search(r"https?://|doi:|isbn", lineage.group(1), re.I): errs.append("Human lineage needs a stable citation or link")
+deep = re.search(r"### Read deeper\n(.*?)(?=\n### |\n## )", t, re.S)
+if deep and len(re.findall(r"https?://", deep.group(1))) > 3: errs.append("Read deeper has more than three links")
 for path in set(re.findall(r"`((?:Reports|lean/Evidence|Education/concepts|SHARED)/[^`\s]+)`", t)):
     if not (ROOT / path).exists(): errs.append(f"dangling link {path}")
 for w in ("great progress","well done","excellent work","impressive"):

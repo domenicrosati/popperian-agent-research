@@ -8,12 +8,13 @@ pending = CTX / "pending_brief"
 last = state.read_text().strip() if state.exists() else "1970-01-01"
 
 spec = SPEC.read_text()
+season = (re.search(r"^Active research season:\s*(.+)$", spec, re.M) or [None,"unspecified"])[1]
 claims = re.findall(r"### (C\d+)\.\s*(.*?)\n(.*?)(?=\n### |\n## |\Z)", spec, re.S)
 dep = {}
 for cid, title, body in claims:
     for d in re.findall(r"Depends on:.*", body):
         for x in re.findall(r"C\d+", d): dep[x] = dep.get(x, 0) + 1
-lines = ["# Packet", f"since: {last}", f"spec version: {spec_version()}", "", "## Claims (status / understanding links / tier / fan-out)"]
+lines = ["# Packet", f"since: {last}", f"spec version: {spec_version()}", f"active research season: {season}", "", "## Claims (status / understanding links / tier / fan-out)"]
 eligible = 0
 for cid, title, body in claims:
     g = lambda k: (re.search(rf"{k}:\s*([^\n<]+)", body) or [None, "?"])[1].strip()
@@ -36,6 +37,7 @@ lines += ["", "## Recent briefs (for spacing retrieval)"]
 for b in sorted((ED/"briefs").glob("*.md"))[-30:]:
     lines.append(f"- {b.name}: concept={frontmatter(b.read_text()).get('concept','?')}")
 lines += ["", "## Demonstrated understanding ledger", (ED/"UNDERSTANDING.md").read_text()]
+lines += ["", "## Trusted post-2023 sources", (ED/"TRUSTED_SOURCES.md").read_text()]
 (CTX / "packet.md").write_text("\n".join(lines) + "\n")
 print(f"packet written: Education/.context/packet.md\n"
       f"dispatch: 'Read Education/AGENT.md and produce today's brief ({today()}).'\n"

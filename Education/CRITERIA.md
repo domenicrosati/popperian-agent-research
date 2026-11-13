@@ -21,6 +21,14 @@ It must also protect time away from AI. Do not manufacture a daily interaction. 
 5. A counterexample or boundary case showing where the argument fails.
 6. The connection to my existing framework (SPEC §1): which belt hypothesis it touches, whether it is progressive or merely accommodating.
 7. The single distinction that determines the rest of the theory around it, if there is one.
+8. The human intellectual lineage: foundational paper or textbook, exact connection, and what the present result changes.
+
+## Literature grounding
+- Follow `LITERATURE_POLICY.md`. Prefer pre-2023 foundational human work and textbooks.
+- Every new `study` concept needs at least one verified bibliographic source and stable link.
+- Include a short excerpt only when verified against the source and genuinely illuminating; give page, section, or theorem location.
+- End with at most three “read deeper” links, ordered by pedagogical value rather than recency.
+- Clearly label source claims, current-project claims, and the agent's synthesis.
 
 ## Retrieval practice
 - Two or three questions about concepts from earlier briefs, spaced: one from ~2 days ago, one from ~1 week, one from ~1 month. Answers at the very bottom, after a page break.

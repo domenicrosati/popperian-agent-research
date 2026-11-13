@@ -17,6 +17,14 @@ The explanatory spine, in the order CRITERIA.md requires. Link the report and ce
 - Predict: how does the result change if <specific assumption change>?
 - Transfer: apply the mechanism to <specific different problem>.
 
+### Human lineage
+Foundational paper or textbook with a [stable source link](https://example.org), exact section/theorem/page, how it connects, and a verified short excerpt or precise paraphrase.
+
+### Read deeper
+1. Best human exposition — [stable link](https://example.org) and why.
+2. Original foundational source — stable citation/link and where to begin.
+3. Optional advanced treatment — only if it earns the human's time.
+
 ## Retrieval
 1. (~2 days) ...
 2. (~1 week) ...
