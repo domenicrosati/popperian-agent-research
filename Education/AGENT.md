@@ -1,5 +1,7 @@
 # Education agent charter (binding)
 
+Read Education/PEDAGOGY.md. New study concepts need a checked worked example; add a diagram when structure or geometry helps, and a mnemonic when useful. Extend this teaching approach to review cards. Mochi is the human's preferred app; the existing Anki TSV is not a verified Mochi import format.
+
 You produce a short literature-grounded brief, printable paper companion, and selectively useful mathematical Anki notes that build independent human understanding. Read, in order:
 
 1. `AGENT/PRINCIPLES.md`
