@@ -75,6 +75,14 @@ Everything below explains how the repository implements those commitments.
 
 ## Repository architecture
 
+## Bundled research skills
+
+The reusable skill library lives in `.agents/skills/` within this repository, so instructions and tooling share one version history. It includes minimal-experiment, research-handoff, paper-companion, claim-reduction, and mathematical-anki. Agents read the matching SKILL.md when needed.
+
+Morning understanding can include up to three source-checked Anki notes for relevant mathematical prerequisites: definitions and norms, theorem/lemma assumptions, proof techniques, identities, decompositions, complexity rates, and conceptual distinctions. Stable IDs support updates without duplicate notes. See `Education/ANKI.md` for the JSON schema, export command, and one-time Anki setup. Cards accompany useful weekday briefs and create no separate reminders.
+
+The practices were informed by [autoresearch](https://github.com/karpathy/autoresearch), [The Agentic Researcher](https://github.com/ZIB-IOL/The-Agentic-Researcher), [long-running agent handoffs](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents), and [Michael Nielsen's work on reading and memory](https://augmentingcognition.com/ltm.html). These are design influences, not evidence that this workflow is experimentally optimal.
+
 Apply `AWAY_POLICY.md` for unattended operation: coordinators may work through weekends, while all human review waits for weekday mornings. Each goal needs explicit recovery permissions and budgets. Local supervision requires an online executor.
 
 Research is seasonal. `RESEARCH_SEASONS.md` distinguishes theory formation, empirical discovery and validation, mathematical consolidation, and rigorous confirmation/paper reduction. The same quiet morning and afternoon runners change behavior with the active season; only the human creates new goals.

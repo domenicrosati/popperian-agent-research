@@ -1,0 +1,8 @@
+---
+name: mathematical-anki
+description: Create source-grounded Anki notes for mathematical prerequisites needed to understand a research discovery.
+---
+Read Education/ANKI.md and the literature policy. Read the actual source passage before composing a note. Select only reusable prerequisites that explain a current discovery: definitions, theorem/lemma assumptions, proof techniques, identities, decompositions, complexity rates, and conceptual distinctions.
+Use one precise retrieval target per card; define all notation on the front and retain load-bearing assumptions. Prefer reconstruction, applicability, boundary cases, and short calculations to isolated formula recognition. Never ask for an entire long proof. Split a proof into the critical maneuver and why it applies. For rates specify quantity, norm, regime, probability, constants/log factors hidden, and assumptions. For identities specify dimensions and invertibility.
+Produce at most three new cards per useful brief by default; zero is valid. Check existing Education/anki/notes.json for overlapping prompts and stable IDs; update an existing ID rather than duplicate. Never mark understanding as mastered from card creation.
+Write notes to Education/anki/notes.json using the documented schema. Run python3 tools/export_anki.py Education/anki/notes.json Education/anki/research.tsv. Export only notes whose source passage you have checked. Report cards alongside the morning brief; never create a separate notification or weekend learning obligation.
