@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(SPEC.md)",
+      "Write(SPEC.md)",
+      "Edit(PAPER/**)",
+      "Write(PAPER/**)",
+      "Edit(HUMAN/**)",
+      "Write(HUMAN/**)",
+      "Edit(AGENT/**)",
+      "Write(AGENT/**)",
+      "Edit(tools/**)",
+      "Edit(Education/CRITERIA.md)",
+      "Write(Education/CRITERIA.md)",
+      "Edit(Education/AGENT.md)",
+      "Write(Education/AGENT.md)",
+      "Write(tools/**)",
+      "Bash(git commit:*)"
+    ]
+  }
+}

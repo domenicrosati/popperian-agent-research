@@ -1,0 +1,4 @@
+# Education agent, weekdays 05:30. Replace AGENT_CMD with however you launch an agent headlessly,
+# e.g. claude -p "$(cat /path/to/repo/Education/.context/dispatch.txt)" --allowedTools Edit,Write,Read,Bash
+# EDUCATION_OUT should point at a folder your iPad syncs (iCloud Drive, Obsidian vault, Working Copy checkout).
+30 5 * * 1-5  cd /path/to/repo && make morning EDUCATION_OUT="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Briefs" >> Education/.context/cron.log 2>&1

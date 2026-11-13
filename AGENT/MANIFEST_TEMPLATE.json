@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "task": "{{ID}}",
+  "report": "Reports/{{DATE}}-{{ID}}.md",
+  "spec_version": "{{SPEC_VERSION}}",
+  "spec_sha": "{{SPEC_SHA}}",
+  "state": "candidate",
+  "producer": {"agent_id": "", "model": "", "prompt_version": "", "source_revision": ""},
+  "claims": [{"id": "C1", "statement": "", "confidence": 0.0, "evidence": []}],
+  "evidence": [{"path": "Reports/evidence/{{ID}}/artifact", "sha256": "", "kind": "experiment", "command": "", "inputs": [], "seed": "", "environment": ""}],
+  "reproduction": {"required": true, "reviewer_id": "", "record": "", "passed": false},
+  "critique": {"required": true, "reviewer_id": "", "record": "", "verdict": ""},
+  "formalization_map": null,
+  "verified_at": null
+}

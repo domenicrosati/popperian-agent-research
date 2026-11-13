@@ -1,0 +1,17 @@
+#!/bin/sh
+# Reject commits that touch human-only paths unless HUMAN=1 is set.
+PROTECTED='^(SPEC\.md|PAPER/|HUMAN/|AGENT/|tools/|Education/CRITERIA\.md|Education/AGENT\.md)'
+if [ "$HUMAN" != "1" ]; then
+  if git diff --cached --name-only | grep -Eq "$PROTECTED"; then
+    echo "pre-commit: human-only paths staged. Commit with HUMAN=1 if you are the human." >&2
+    git diff --cached --name-only | grep -E "$PROTECTED" >&2
+    exit 1
+  fi
+fi
+# Reject Lean evidence with sorry/admit
+if git diff --cached --name-only | grep -q '^lean/Evidence/.*\.lean$'; then
+  if git diff --cached -U0 -- 'lean/Evidence/*.lean' | grep -E '^\+.*\b(sorry|admit)\b' >/dev/null; then
+    echo "pre-commit: sorry/admit in lean/Evidence" >&2; exit 1
+  fi
+fi
+exit 0

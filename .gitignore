@@ -1,0 +1,6 @@
+AgentWork/tasks/*/work/
+AgentWork/.last_digest
+lean/.lake/
+__pycache__/
+*.aux *.log *.out *.bbl *.blg
+Education/.context/
